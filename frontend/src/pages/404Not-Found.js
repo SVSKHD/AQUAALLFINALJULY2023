@@ -8,8 +8,8 @@ const NotFound = () => {
       <Card>
         <Card.Img variant="top" src={NF} />
         <Card.Body>
-          <Button variant="primary">
-            <FaHome />
+          <Button href="/" variant="primary">
+            <FaHome size={25}/>
           </Button>
         </Card.Body>
       </Card>
