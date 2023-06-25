@@ -7,13 +7,13 @@ const SeoHead = ({ data }) => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="keyphrases" content={keyphrases}/>
-      
+      <meta name="keyphrases" content={keyphrases} />
+
       {/* indexing and seo */}
-      <meta name="Robots" content="index , follow"/>
+      <meta name="Robots" content="index , follow" />
 
       <meta name="og:title" content={title} />
-      <meta name="og:type" content="movie" />
+      <meta name="og:type" content={type} />
       <meta name="og:url" content={url} />
       <meta name="og:image" content="http://ia.media-imdb.com/rock.jpg" />
       <meta name="og:site_name" content="IMDb" />
@@ -31,12 +31,11 @@ const SeoHead = ({ data }) => {
       <meta name="og:locality" content="Palo Alto" />
       <meta name="og:region" content="CA" />
       <meta name="og:postal-code" content="94304" />
-      <meta name="og:country-name" content="USA" />
+      <meta name="og:country-name" content="IN" />
 
       <meta property="fb:admins" content="987654321" />
       <meta property="og:type" content={type} />
       <meta property="og:points" content="POINTS_FOR_ACHIEVEMENT" />
-
     </Helmet>
   );
 };

@@ -1,12 +1,12 @@
-import AquaNav from "./Nav"
+import AquaNav from "./Nav";
+import { Container } from "react-bootstrap";
 
 const CommonLayout = (props) => {
-  return( 
-  <>
-  <AquaNav/>
-  {props.children}
-  
-  </>
-  )
+  return (
+    <>
+      <AquaNav />
+      <Container fluid>{props.children}</Container>
+    </>
+  );
 };
 export default CommonLayout;
