@@ -13,6 +13,16 @@ const App = () => {
       component: <HomeView />,
     },
     {
+      path: "/shop",
+      name: "Shop",
+      component: <HomeView />,
+    },
+    {
+      path: "/compare",
+      name: "Compare",
+      component: <HomeView />,
+    },
+    {
       path: "*",
       name: "Not-Found",
       component: <NotFound />,
