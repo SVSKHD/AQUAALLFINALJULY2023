@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Mulish:wght@500&display=swap');
 body {
   margin: 0;
-  font-family: "Mulish"
+  font-family: "Mulish"!important
 }
 
 code {

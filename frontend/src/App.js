@@ -7,6 +7,9 @@ import CompareView from "./pages/compare";
 import CartView from "./pages/cart";
 import NotFound from "./pages/404Not-Found";
 
+//user
+import UserDashoard from "./pages/user/Dashboard";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthDialog from "./components/AuthDialog/AuthDialog";
 
@@ -43,10 +46,16 @@ const App = () => {
       component: <ServiceView />,
     },
     {
+     path:"/user/dashboard/:name",
+     name:"User-Dashboard",
+     component:<UserDashoard/>
+    },
+    {
       path: "*",
       name: "Not-Found",
       component: <NotFound />,
     },
+   
   ];
   return (
     <>
