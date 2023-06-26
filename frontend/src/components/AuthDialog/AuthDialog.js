@@ -27,8 +27,8 @@ const AuthDialog = (props) => {
           }}
         >
           {signupStatus
-            ? "Don't have an Account Singup"
-            : "Already have an account..? Signin"}
+            ? "Don't have an Account..? Singup"
+            : "Already have an Account..? Signin"}
         </Button>
         </div>
       </AqVerticalCentralDialog>

@@ -40,12 +40,11 @@ const DashboardLayout = (props) => {
                         <ListGroup className='shadow-lg mb-3'>
                             <ListGroup.Item
                                 as="li"
-                                className="d-flex justify-content-between align-items-start"
+                                className="d-flex justify-content-between align-items-start p-4"
                             >
                                 <div className="ms-2 me-auto">
                                     Hello
-                                    <div className="fw-bold">{user ? user.name : "Aquakart User"}</div>
-
+                                    <div className="fw-bold text-primary">{user ? user.name : "Aquakart User"}</div>
                                 </div>
                             </ListGroup.Item>
                         </ListGroup>
@@ -54,7 +53,7 @@ const DashboardLayout = (props) => {
                                 <ListGroup.Item
                                     key={i}
                                     as="li"
-                                    className="d-flex justify-content-between align-items-start shadow-lg p-4 m-1"
+                                    className="d-flex justify-content-between align-items-start shadow-lg p-4 m-1 text-primary"
                                 >
                                     <div className="ms-2 me-auto">
                                         <div className="fw-bold">{r.name}</div>
