@@ -1,8 +1,9 @@
-const DashboardProfile = () =>{
-return(
-<>
-<h1>Dashboard Profile</h1>
-</>
-)
+import UserProfileComponent from "../../pageComponents/user/profile"
+const UserDashboardProfileView = () => {
+    return (
+        <>
+            <UserProfileComponent />
+        </>
+    )
 }
-export default DashboardProfile
+export default UserDashboardProfileView

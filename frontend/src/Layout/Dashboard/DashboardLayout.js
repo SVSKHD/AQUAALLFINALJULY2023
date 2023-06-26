@@ -1,4 +1,4 @@
-import { Badge, ListGroup, Container } from 'react-bootstrap';
+import { Badge, ListGroup, Container, Card } from 'react-bootstrap';
 import DashboardNav from './DashboardNav';
 import { useSelector, useDispatch } from "react-redux"
 
@@ -17,6 +17,18 @@ const DashboardLayout = (props) => {
         {
             name: "History",
             path: "/user/history"
+        },
+        {
+            name: "Services",
+            path: "/user/services"
+        },
+        {
+            name: "Coupons",
+            path: "/user/coupons"
+        },
+        {
+            name: "userIndex",
+            path: "/user/home"
         }
     ]
     return (
@@ -42,21 +54,19 @@ const DashboardLayout = (props) => {
                                 <ListGroup.Item
                                     key={i}
                                     as="li"
-                                    className="d-flex justify-content-between align-items-start shadow-lg"
+                                    className="d-flex justify-content-between align-items-start shadow-lg p-4 m-1"
                                 >
                                     <div className="ms-2 me-auto">
                                         <div className="fw-bold">{r.name}</div>
-                                        Cras justo odio
                                     </div>
-                                    <Badge bg="primary" pill>
-                                        14
-                                    </Badge>
                                 </ListGroup.Item>
                             ))}
                         </ListGroup>
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        {props.children}
+                        <Card className="shadow-lg p-3 dashboard-height">
+                            <Card.Body>{props.children}</Card.Body>
+                        </Card>
                     </div>
                 </div>
             </Container>

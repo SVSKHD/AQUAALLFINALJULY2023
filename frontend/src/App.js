@@ -9,6 +9,9 @@ import NotFound from "./pages/404Not-Found";
 
 //user
 import UserDashoard from "./pages/user/Dashboard";
+import UserCouponView from "./pages/user/coupon";
+import UserDashboardProfileView from "./pages/user/profile";
+import UserOrderView from "./pages/user/orders";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthDialog from "./components/AuthDialog/AuthDialog";
@@ -46,16 +49,31 @@ const App = () => {
       component: <ServiceView />,
     },
     {
-     path:"/user/dashboard/:name",
-     name:"User-Dashboard",
-     component:<UserDashoard/>
+      path: "/user/dashboard/:name",
+      name: "User-Dashboard",
+      component: <UserDashoard />
+    },
+    {
+      path: "/user/dashboard/coupons",
+      name: "User-Coupons",
+      component: <UserCouponView />
+    },
+    {
+      path: "/user/dashboard/profile",
+      name: "User-Profile",
+      component: <UserDashboardProfileView />
+    },
+    {
+      path: "/user/dashboard/orders",
+      name: "User-Order",
+      component: <UserOrderView />
     },
     {
       path: "*",
       name: "Not-Found",
       component: <NotFound />,
     },
-   
+
   ];
   return (
     <>

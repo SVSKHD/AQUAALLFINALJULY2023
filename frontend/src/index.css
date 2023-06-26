@@ -9,6 +9,10 @@ code {
     monospace;
 }
 
+.dashboard-height{
+  height: 700px!important;
+}
+
 
 .link-del{
   text-decoration: none!important;
