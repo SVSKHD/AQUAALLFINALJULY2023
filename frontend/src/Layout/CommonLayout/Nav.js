@@ -4,16 +4,16 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import LOGO from "../../assests/logo.png"
-import {FaCartPlus} from "react-icons/fa"
+import { FaCartPlus } from "react-icons/fa"
 import { useDispatch } from "react-redux";
 
-const AquaNav = () =>{
+const AquaNav = () => {
   const dispatch = useDispatch()
   return (
     <Navbar expand="lg">
       <Container fluid>
         <Navbar.Brand href="/">
-            <img src={LOGO} height="40" alt='Aquakart-emb'/>
+          <img src={LOGO} height="40" alt='Aquakart-emb' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -36,13 +36,20 @@ const AquaNav = () =>{
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-           <Button className='m-1'><FaCartPlus size={25}/></Button>
-           <Button className='m-1' onClick={()=>{
-             dispatch({
+          <Button className='m-1'
+            onClick={() => {
+              dispatch({
+                type: "SET_CART_DRAWER_VISIBLE",
+                payload: true,
+              })
+            }}
+          ><FaCartPlus size={25} /></Button>
+          <Button className='m-1' onClick={() => {
+            dispatch({
               type: "SET_AUTH_DRAWER_VISIBLE",
               payload: true,
-             })
-           }}>Signup</Button>
+            })
+          }}>Signup</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

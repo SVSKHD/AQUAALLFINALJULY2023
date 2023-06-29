@@ -18,10 +18,11 @@ import AuthDialog from "./components/AuthDialog/AuthDialog";
 
 //Store
 import { useSelector, useDispatch } from "react-redux";
+import CartDrawer from "./components/cartDrawer/drawer";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { authDialog } = useSelector((state) => ({ ...state }));
+  const { authDialog, cartDrawer } = useSelector((state) => ({ ...state }));
   const AquaRoutes = [
     {
       path: "/",
@@ -85,6 +86,15 @@ const App = () => {
             payload: false,
           })
         }
+      />
+      <CartDrawer show={cartDrawer} hide={() => {
+        dispatch({
+          type: "SET_CART_DRAWER_VISIBLE",
+          payload: false,
+        })
+      }} 
+      placement="end"
+      title="Cart"
       />
       <Router>
         <Routes>
