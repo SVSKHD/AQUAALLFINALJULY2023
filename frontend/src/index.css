@@ -13,6 +13,19 @@ code {
   height: 700px!important;
 }
 
+.user-card{
+  background: #000428; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #000428, #004e92); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #000428, #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.user-card-body{
+  border-radius: 10px;
+}
+
+.user-card-name{
+  font-size: 2.5rem!important;
+}
 
 .link-del{
   text-decoration: none!important;
