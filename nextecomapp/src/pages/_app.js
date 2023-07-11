@@ -1,6 +1,8 @@
 import '@/styles/globals.css'
 import { Provider } from "react-redux"
 import { wrapper } from "../Store/store"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
