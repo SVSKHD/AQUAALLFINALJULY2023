@@ -1,11 +1,11 @@
-import AquaDashboardLayout from "@/Layout/CommonLayout"
+import AquaCommonLayout from "@/Layout/CommonLayout"
 
 const CartPageComponent = () => {
     return (
         <>
-            <AquaDashboardLayout>
+            <AquaCommonLayout>
                 <h1>Cart</h1>
-            </AquaDashboardLayout>
+            </AquaCommonLayout>
         </>
     )
 }

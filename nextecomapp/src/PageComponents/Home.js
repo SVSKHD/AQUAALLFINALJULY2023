@@ -1,11 +1,15 @@
 import AquaCommonLayout from "@/Layout/CommonLayout"
+import HomeSection1 from "./Home/HomeSection1"
 
 
-const HomePageComponent = (props) => {
+
+const HomePageComponent = () => {
     return (
         <>
             <AquaCommonLayout>
-                {props.children}
+                
+                <HomeSection1/>
+            
             </AquaCommonLayout>
         </>
     )

@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       <SeoHead data={SeoData} />
-      <HomePageComponent />
+      <HomePageComponent/>
     </>
   )
 }

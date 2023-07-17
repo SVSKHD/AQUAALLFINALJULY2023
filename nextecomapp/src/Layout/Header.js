@@ -1,11 +1,15 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavDropdown, Dropdown } from 'react-bootstrap';
+import { NavDropdown, Dropdown, Button } from 'react-bootstrap';
+import { FaCartPlus, FaUser } from "react-icons/fa"
 import Image from 'next/image'
 import AQ from "../assests/logo.png"
+import { useState } from 'react';
+import AuthReusableDialog from '@/auth/authDialog';
 
 const AquaHeader = () => {
+    const [authDialog, setAuthDialog] = useState(false)
     return (
         <div className='mb-3'>
             <Navbar expand="lg" className='shadow-lg'>
@@ -29,7 +33,18 @@ const AquaHeader = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav className='mr-auto'>
-                            <Dropdown>
+                            <button type="button" className="btn btn-primary position-relative">
+                                <FaCartPlus size={25} />
+                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    99+
+                                    <span className="visually-hidden">unread messages</span>
+                                </span>
+                            </button>
+                            <Button variant="dark" className='ms-2' onClick={() => setAuthDialog(!authDialog)} >
+                                <FaUser size={25} />
+                            </Button>
+                            <AuthReusableDialog show={authDialog} close={() => setAuthDialog(false)} />
+                            {/* <Dropdown>
                                 <Dropdown.Toggle variant="link" id="dropdown-basic">
                                     <Image src={AQ} width={35}
                                         height={35} />
@@ -39,7 +54,7 @@ const AquaHeader = () => {
                                     <Dropdown.Item href="#/action-1">Dashboard</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Orders</Dropdown.Item>
                                 </Dropdown.Menu>
-                            </Dropdown>
+                            </Dropdown> */}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
