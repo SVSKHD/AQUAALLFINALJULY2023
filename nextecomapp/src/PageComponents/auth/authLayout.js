@@ -11,7 +11,7 @@ const AuthLayout = () => {
 
     useEffect(() => {
         signin ? setAuthTitle("Signin") : setAuthTitle("Signup")
-        signin ? setAuthDesc("Don't Haave An Account..? Signup") : setAuthDesc("Have An Account..? Signin")
+        signin ? setAuthDesc("Don't Have An Account..? Signup") : setAuthDesc("Have An Account..? Signin")
     }, [signin])
 
     const ManipulateAuthState = () => {
