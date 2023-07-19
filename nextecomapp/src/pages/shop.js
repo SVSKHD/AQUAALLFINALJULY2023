@@ -1,10 +1,10 @@
-import ShopPageComponent from "@/PageComponents/Shop"
+import ShopPageComponent from "@/PageComponents/Shop";
 
 const Shop = () => {
-    return (
-        <>
-            <ShopPageComponent />
-        </>
-    )
-}
-export default Shop
+  return (
+    <>
+      <ShopPageComponent />
+    </>
+  );
+};
+export default Shop;

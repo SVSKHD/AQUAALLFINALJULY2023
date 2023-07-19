@@ -1,8 +1,4 @@
-const offerHead = () =>{
-    return(
-        <>
-        
-        </>
-    )
-}
-expot default offerHead
+const offerHead = () => {
+  return <></>;
+};
+export default offerHead;

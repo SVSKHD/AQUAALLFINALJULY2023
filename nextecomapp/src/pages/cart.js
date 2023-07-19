@@ -1,10 +1,10 @@
-import CartPageComponent from "@/PageComponents/Cart"
+import CartPageComponent from "@/PageComponents/Cart";
 
-const Cart = () =>{
-return(
+const Cart = () => {
+  return (
     <>
-    <CartPageComponent/>
+      <CartPageComponent />
     </>
-)
-}
-export default Cart
+  );
+};
+export default Cart;

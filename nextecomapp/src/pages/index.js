@@ -1,5 +1,5 @@
-import HomePageComponent from "@/PageComponents/Home"
-import SeoHead from "@/Layout/SeoHead"
+import HomePageComponent from "@/PageComponents/Home";
+import SeoHead from "@/Layout/SeoHead";
 
 const Home = () => {
   const SeoData = {
@@ -8,13 +8,13 @@ const Home = () => {
     keywords: "",
     keyphrases: "",
     site: "",
-    canonical: ""
-  }
+    canonical: "",
+  };
   return (
     <>
       <SeoHead data={SeoData} />
-      <HomePageComponent/>
+      <HomePageComponent />
     </>
-  )
-}
-export default Home
+  );
+};
+export default Home;

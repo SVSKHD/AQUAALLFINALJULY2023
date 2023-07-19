@@ -3,16 +3,25 @@ import AQ from "../../assests/logo.png"
 import { Button } from 'react-bootstrap';
 import { useState } from "react";
 import firebaseOperations from "@/firebase/firebaseOperations";
-
+import toastMessages from "@/reusableComponents/toast";
 
 
 const SigninComponentPage = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const {handleSignin} = firebaseOperations()
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      handleSignin(email,password)
+    const {successToast , errorToast} = toastMessages()
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+
+        const { result, error } = await handleSignin(email, password);
+
+        if (error) {
+            errorToast(error)
+        }
+
+        // else successful
+        successToast("Succesfully logged in")
     }
     return (
         <>

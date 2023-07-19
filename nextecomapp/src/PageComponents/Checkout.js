@@ -1,10 +1,10 @@
-import AquaCommonLayout from "@/Layout/CommonLayout"
+import AquaCommonLayout from "@/Layout/CommonLayout";
 
-const CheckoutPageComponent = () =>{
-return(
+const CheckoutPageComponent = () => {
+  return (
     <>
-    <AquaCommonLayout></AquaCommonLayout>
+      <AquaCommonLayout></AquaCommonLayout>
     </>
-)
-}
-export default CheckoutPageComponent
+  );
+};
+export default CheckoutPageComponent;

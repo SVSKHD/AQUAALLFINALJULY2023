@@ -1,10 +1,10 @@
-import AuthLayout from "../PageComponents/auth/authLayout"
+import AuthLayout from "../PageComponents/auth/authLayout";
 
-const AuthOperations = () =>{
-return(
+const AuthOperations = () => {
+  return (
     <>
-    <AuthLayout/>
+      <AuthLayout />
     </>
-)
-}
-export default AuthOperations
+  );
+};
+export default AuthOperations;
