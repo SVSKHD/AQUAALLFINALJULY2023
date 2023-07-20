@@ -17,7 +17,7 @@ const ShopComponent = () => {
             <div className="col-md-4 col-lg-4 col-xs-12 col-sm-12">
               <Card>
                 <Card.Body></Card.Body>
-              </Card>
+              </Card> 
             </div>
             <div className="col-md-8 col-lg-8 col-xs-12 col-sm-12">
               <Card>
