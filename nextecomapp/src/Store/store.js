@@ -7,7 +7,7 @@ const Store = () =>
   configureStore({
     reducer: {
       cart: cartReducer, 
-      authDialog:AuthDialog,     
+      AuthDialog:AuthDialog,     
       devTools: true,
     },
   });

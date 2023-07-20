@@ -2,7 +2,7 @@ import { Card, Container } from "react-bootstrap"
 const AquaFooter = () => {
     return (
         <>
-        <div sticky="bottom">
+        <div className="fixed-bottom">
             <Card className="border-0 shadow-lg">
                 <Card.Body>
                     <Container fluid>

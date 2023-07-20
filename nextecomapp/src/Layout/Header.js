@@ -7,10 +7,11 @@ import Image from "next/image";
 import AQ from "../assests/logo.png";
 import { useState } from "react";
 import AuthReusableDialog from "@/auth/authDialog";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 
 const AquaHeader = () => {
  const dispatch = useDispatch()
+ const {AuthDialog} = useSelector((state) => ({ ...state }));
   return (
     <div className="mb-3">
       <Navbar expand="lg" className="shadow-lg">
@@ -56,6 +57,12 @@ const AquaHeader = () => {
               >
                 <FaUser size={25} />
               </Button>
+              <AuthReusableDialog show={AuthDialog} close={()=>dispatch({
+                 type: "SET_AUTH_DIALOG_VISIBLE",
+                 payload: false, 
+              })}>
+
+              </AuthReusableDialog>
               {/* <Dropdown>
                                 <Dropdown.Toggle variant="link" id="dropdown-basic">
                                     <Image src={AQ} width={35}
