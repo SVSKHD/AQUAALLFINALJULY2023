@@ -22,10 +22,11 @@ const AquaNav = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/shop">Shop</Nav.Link>
+            
             <Nav.Link href="/compare">Compare</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
             <Nav.Link href="/service">Services</Nav.Link>
+            <Nav.Link href="/shop">Shop</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
