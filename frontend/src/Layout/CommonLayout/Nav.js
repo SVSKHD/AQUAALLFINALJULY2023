@@ -8,7 +8,7 @@ import { FaCartPlus } from "react-icons/fa"
 import { useDispatch } from "react-redux";
 
 const AquaNav = () => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   return (
     <Navbar expand="lg">
       <Container fluid>
