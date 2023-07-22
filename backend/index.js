@@ -1,10 +1,18 @@
-const App = require("./app")
-const DbConnect = require("./config/db")
+const App = require("./app");
+const DbConnect = require("./config/db");
+const Cloudinary = require("cloudinary");
 
-DbConnect()
+DbConnect();
 
-const PORT = process.env.PORT
+//cloudinary
+Cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-App.listen(PORT,()=>{
-    console.log(`Server is running at ${PORT}`)
-})
+const PORT = process.env.PORT;
+
+App.listen(PORT, () => {
+  console.log(`Server is running at ${PORT}`);
+});
