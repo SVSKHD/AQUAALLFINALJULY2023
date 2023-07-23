@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600&family=Roboto&display=swap');
 
 body{
+    background-color: #8294C4;
     font-family: 'Mulish', sans-serif;
     text-align: center;
+}
+
+.page-body{
+    color:#dfdfdf
 }
 
 

@@ -15,7 +15,7 @@
         <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
           <q-list padding>
             <q-item
-              v-for="item in menu"
+              v-for="item in OfflineMenu"
               clickable
               v-ripple
               :key="item"
@@ -29,14 +29,33 @@
                 {{ item.name }}
               </q-item-section>
             </q-item>
+            <q-separator/>
+            <q-item
+              v-for="item in OnlineMenu"
+              clickable
+              v-ripple
+              :key="item"
+              :to="item.path"
+            >
+              <q-item-section avatar>
+                <q-icon :name="item.icon" />
+              </q-item-section>
+
+              <q-item-section>
+                {{ item.name }}
+              </q-item-section>
+            </q-item>
+
+
+
           </q-list>
         </q-scroll-area>
       </q-drawer>
 
       <q-page-container>
-        <q-page padding>
+        <q-page padding class="page-body">
           <Transition name="fade" mode="out-in">
-            <router-view></router-view>
+            <router-view/>
           </Transition>
         </q-page>
       </q-page-container>
@@ -49,15 +68,28 @@ import { ref } from "vue";
 
 export default {
   setup() {
-    const menu = ref([
+    const OfflineMenu = ref([
       {
         name: "Invoices",
         path: "/invoices",
-        icon: "eva-clipboard",
+        icon: "fas fa-clipboard-list",
+      },
+      {
+        name: "Quotations",
+        path: "/quote",
+        icon: "fas fa-inbox",
       },
     ]);
+    const OnlineMenu = ref([
+    {
+        name: "Products",
+        path: "/products",
+        icon: "fas fa-caret-square-down",
+      },
+    ])
     return {
-      menu,
+      OfflineMenu,
+      OnlineMenu,
       drawer: ref(false),
       miniState: ref(true),
     };
