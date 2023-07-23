@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Mulish:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600&family=Roboto&display=swap');
 body {
   margin: 0;
-  font-family: "Mulish"!important
+  font-family: "Roboto"!important
 }
 
 code {

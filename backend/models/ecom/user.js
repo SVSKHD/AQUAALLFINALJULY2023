@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema({
   },
   phone: {
     type: Number,
-    required: [true, "Please provide an phone"],
     unique: true,
   },
   email: {
@@ -35,18 +34,23 @@ const userSchema = new mongoose.Schema({
     address1:{
         type:String
     },
-    
+    address2:{
+      type:String
+    },
+    address3:{
+      type:String
+    }
 }],
-  photo: {
-    id: {
-      type: String,
-      required: true,
-    },
-    secure_url: {
-      type: String,
-      required: true,
-    },
-  },
+  // photo: {
+  //   id: {
+  //     type: String,
+  //     required: true,
+  //   },
+  //   secure_url: {
+  //     type: String,
+  //     required: true,
+  //   },
+  // },
   forgotPasswordToken: String,
   forgotPasswordExpiry: Date,
   createdAt: {

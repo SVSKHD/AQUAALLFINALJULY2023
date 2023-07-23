@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const AquaUsers = require("../models/ecom/user");
 const BigPromise = require("../middlewares/bigPromise");
 const CustomError = require("../utils/customError");
 const jwt = require("jsonwebtoken");
@@ -20,17 +20,17 @@ exports.isLoggedIn = BigPromise(async (req, res, next) => {
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  req.user = await User.findById(decoded.id);
+  req.AquaUsers = await AquaUsers.findById(decoded.id);
 
   next();
 });
 
 exports.customRole = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
+    if (!roles.includes(req.AquaUsers.role)) {
       return next(new CustomError("You are not allowed for this resouce", 403));
     }
-    console.log(req.user.role);
+    console.log(req.AquaUsers.role);
     next();
   };
 };

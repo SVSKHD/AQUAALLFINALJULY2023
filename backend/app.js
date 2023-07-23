@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const { readdirSync } = require("fs");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
-
+const Cors = require("cors")
 const App = express();
 
 //swagger
@@ -24,6 +24,7 @@ App.use(express.json());
 App.use(express.urlencoded({ extended: true }));
 App.use(productionError);
 App.use(morgan("tiny"));
+App.use(Cors())
 //cookies and file middlreware
 App.use(cookieParser());
 App.use(
