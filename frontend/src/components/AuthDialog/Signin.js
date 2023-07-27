@@ -1,8 +1,9 @@
 import { useState } from "react";
 import LOGO from "../../assests/Default.png";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import UserOperations from "../../services/user";
 import ToastMessages from "../../reusables/toast";
+import useSpinner from "../../reusables/Spinner";
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -13,19 +14,23 @@ const Signin = () => {
   });
   const { email, password, error, loading } = values;
   const { userLogin } = UserOperations();
-  const {SuccessNotify} = ToastMessages()
+  const { SuccessNotify, ErrorNotify } = ToastMessages();
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    setValues({ loading: true });
     userLogin({ email, password })
       .then((res) => {
         console.log("success", res);
-        SuccessNotify("Succesfully Logged In")
+        SuccessNotify("Succesfully Logged In");
+        setValues({ loading: false });
       })
       .catch((err) => {
         console.log("err", err);
+        setValues({ loading: false });
+        ErrorNotify(err);
       });
   };
   return (
@@ -65,7 +70,7 @@ const Signin = () => {
             </Form.Group>
             <div className="d-grid gap-2">
               <Button variant="primary" type="submit">
-                Signin
+                {loading ? <useSpinner /> : "Signin"}
               </Button>
             </div>
           </Form>
