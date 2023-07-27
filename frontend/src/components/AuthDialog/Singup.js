@@ -2,6 +2,7 @@ import LOGO from "../../assests/Default.png";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import UserOperations from "../../services/user";
+import { useDispatch } from "react-redux";
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -12,6 +13,7 @@ const Signin = () => {
     loading: false,
     didRedirect: false,
   });
+  const dispatch = useDispatch();
 
   const { email, name, password, error, loading, didRedirect } = values;
   const { userSignup } = UserOperations();
@@ -22,9 +24,13 @@ const Signin = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: false, loading: true });
-    userSignup({name, email, password})
+    userSignup({ name, email, password })
       .then((res) => {
         console.log("res", res);
+        dispatch({
+          type: "SET_AUTH_STATUS_VISIBLE",
+          payload: true,
+        });
       })
       .catch((err) => {
         console.log("err", err);
@@ -33,9 +39,7 @@ const Signin = () => {
 
   return (
     <>
-    <div>
-      {/* error message handling */}
-    </div>
+      <div>{/* error message handling */}</div>
       <div className="row">
         <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12 text-center">
           <img

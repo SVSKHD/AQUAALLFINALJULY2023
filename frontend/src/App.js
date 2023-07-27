@@ -20,6 +20,9 @@ import AuthDialog from "./components/AuthDialog/AuthDialog";
 import { useSelector, useDispatch } from "react-redux";
 import CartDrawer from "./components/cartDrawer/drawer";
 
+//toaster
+import { Toaster } from "react-hot-toast";
+
 const App = () => {
   const dispatch = useDispatch();
   const { authDialog, cartDrawer } = useSelector((state) => ({ ...state }));
@@ -52,32 +55,32 @@ const App = () => {
     {
       path: "/user/dashboard/:name",
       name: "User-Dashboard",
-      component: <UserDashoard />
+      component: <UserDashoard />,
     },
     {
       path: "/user/dashboard/coupons",
       name: "User-Coupons",
-      component: <UserCouponView />
+      component: <UserCouponView />,
     },
     {
       path: "/user/dashboard/profile",
       name: "User-Profile",
-      component: <UserDashboardProfileView />
+      component: <UserDashboardProfileView />,
     },
     {
       path: "/user/dashboard/orders",
       name: "User-Order",
-      component: <UserOrderView />
+      component: <UserOrderView />,
     },
     {
       path: "*",
       name: "Not-Found",
       component: <NotFound />,
     },
-
   ];
   return (
     <>
+      <Toaster position="bottom-center" reverseOrder={false} />
       <AuthDialog
         show={authDialog}
         hide={() =>
@@ -87,14 +90,16 @@ const App = () => {
           })
         }
       />
-      <CartDrawer show={cartDrawer} hide={() => {
-        dispatch({
-          type: "SET_CART_DRAWER_VISIBLE",
-          payload: false,
-        })
-      }} 
-      placement="end"
-      title="Cart"
+      <CartDrawer
+        show={cartDrawer}
+        hide={() => {
+          dispatch({
+            type: "SET_CART_DRAWER_VISIBLE",
+            payload: false,
+          });
+        }}
+        placement="end"
+        title="Cart"
       />
       <Router>
         <Routes>
