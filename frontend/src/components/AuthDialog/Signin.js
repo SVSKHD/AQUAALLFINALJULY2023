@@ -3,16 +3,17 @@ import LOGO from "../../assests/Default.png";
 import { Button, Form, Spinner } from "react-bootstrap";
 import UserOperations from "../../services/user";
 import ToastMessages from "../../reusables/toast";
-import useSpinner from "../../reusables/Spinner";
+import UseSpinner from "../../reusables/Spinner";
+import { useDispatch } from "react-redux";
 
 const Signin = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
-    error: false,
-    loading: false,
   });
-  const { email, password, error, loading } = values;
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const { email, password } = values;
   const { userLogin } = UserOperations();
   const { SuccessNotify, ErrorNotify } = ToastMessages();
   const handleChange = (name) => (event) => {
@@ -20,17 +21,21 @@ const Signin = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setValues({ loading: true });
+    setLoading(true);
     userLogin({ email, password })
       .then((res) => {
         console.log("success", res);
+        dispatch({
+          type: "LOGGED_IN_USER",
+          payload: res.data,
+        });
         SuccessNotify("Succesfully Logged In");
-        setValues({ loading: false });
+        setTimeout(()=>setLoading(false), 3000);
       })
       .catch((err) => {
         console.log("err", err);
-        setValues({ loading: false });
         ErrorNotify(err);
+        setTimeout(10000, setLoading(false));
       });
   };
   return (
@@ -70,7 +75,7 @@ const Signin = () => {
             </Form.Group>
             <div className="d-grid gap-2">
               <Button variant="primary" type="submit">
-                {loading ? <useSpinner /> : "Signin"}
+                {loading ? <UseSpinner variant="light" size="md" /> : "Signin"}
               </Button>
             </div>
           </Form>

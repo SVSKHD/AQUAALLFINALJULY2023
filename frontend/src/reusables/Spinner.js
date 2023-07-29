@@ -1,5 +1,5 @@
 import { Spinner } from "react-bootstrap";
-const useSpinner = (props) => {
+const UseSpinner = (props) => {
     const {variant , animation , size} = props
   return (
     <>
@@ -14,4 +14,4 @@ const useSpinner = (props) => {
     </>
   );
 };
-export default useSpinner;
+export default UseSpinner;
