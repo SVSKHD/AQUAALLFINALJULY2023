@@ -30,3 +30,54 @@ code {
 .link-del{
   text-decoration: none!important;
 }
+
+
+/* ticks */
+
+* {
+  box-sizing: border-box;
+}
+
+html,body {
+  height: 100%;
+}
+
+.demo-wrapper {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.svg-wrapper {
+  background: blueviolet;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  width: 85px;
+}
+
+.path {
+  fill: transparent;
+  stroke: #53bf8b;
+  stroke-width: 2;
+  stroke-dasharray: 25;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: animate 3s cubic-bezier(0, 0, 0.32, -0.13);
+}
+
+@keyframes animate {
+  from {
+    stroke-dashoffset: 26;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}

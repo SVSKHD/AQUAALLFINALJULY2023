@@ -12,6 +12,7 @@ const Signin = () => {
     password: "",
   });
   const dispatch = useDispatch();
+ 
   const [loading, setLoading] = useState(false);
   const { email, password } = values;
   const { userLogin } = UserOperations();
@@ -29,13 +30,13 @@ const Signin = () => {
           type: "LOGGED_IN_USER",
           payload: res.data,
         });
+        setTimeout(() => setLoading(false), 1000);
         SuccessNotify("Succesfully Logged In");
-        setTimeout(()=>setLoading(false), 3000);
       })
       .catch((err) => {
         console.log("err", err);
-        ErrorNotify(err);
         setTimeout(10000, setLoading(false));
+        ErrorNotify(err);
       });
   };
   return (
