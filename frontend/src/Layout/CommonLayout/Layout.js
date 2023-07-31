@@ -8,7 +8,7 @@ const CommonLayout = (props) => {
     <>
       <AquaNav />
       <PageWrapper>
-      <Container>{props.children}</Container>
+      <Container fluid>{props.children}</Container>
       </PageWrapper>
       <AquaFooter/>
     </>

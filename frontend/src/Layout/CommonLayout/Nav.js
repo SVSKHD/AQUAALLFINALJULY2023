@@ -1,14 +1,12 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { Button, Container, Form, Nav, Navbar, Dropdown, DropdownButton } from 'react-bootstrap';
+
 import LOGO from "../../assests/logo.png"
-import { FaCartPlus } from "react-icons/fa"
-import { useDispatch } from "react-redux";
+import { FaCartPlus, FaUser } from "react-icons/fa"
+import { useDispatch, useSelector } from "react-redux";
 
 const AquaNav = () => {
   const dispatch = useDispatch()
+  const { user } = useSelector((state) => ({ ...state }))
   return (
     <Navbar expand="lg">
       <Container fluid>
@@ -22,7 +20,7 @@ const AquaNav = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            
+
             <Nav.Link href="/compare">Compare</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
             <Nav.Link href="/service">Services</Nav.Link>
@@ -37,23 +35,39 @@ const AquaNav = () => {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-          <Button className='m-1'
-            onClick={() => {
+
+          {user ? (<>
+            <Button className='m-1' variant='light' onClick={() => {
               dispatch({
                 type: "SET_CART_DRAWER_VISIBLE",
                 payload: true,
               })
-            }}
-          ><FaCartPlus size={25} /></Button>
-          <Button className='m-1' onClick={() => {
-            dispatch({
-              type: "SET_AUTH_DRAWER_VISIBLE",
-              payload: true,
-            })
-          }}>Signup</Button>
+            }} >
+              <FaUser size={25} />
+            </Button>
+          </>) : (
+            <>
+              <Button className='m-1'
+                onClick={() => {
+                  dispatch({
+                    type: "SET_CART_DRAWER_VISIBLE",
+                    payload: true,
+                  })
+                }}
+              ><FaCartPlus size={25} /></Button>
+              <Button className='m-1' onClick={() => {
+                dispatch({
+                  type: "SET_AUTH_DRAWER_VISIBLE",
+                  payload: true,
+                })
+              }}>Signup</Button>
+            </>
+          )}
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
   );
 }
 

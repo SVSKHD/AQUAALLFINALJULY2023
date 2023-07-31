@@ -3,19 +3,18 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import UserOperations from "../../services/user";
 import { useDispatch } from "react-redux";
+import ToastMessages from "../../reusables/toast";
 
 const Signin = () => {
   const [values, setValues] = useState({
     email: "",
     name: "",
     password: "",
-    error: "",
-    loading: false,
-    didRedirect: false,
   });
   const dispatch = useDispatch();
+  const {SuccessNotify , ErrorNotify} = ToastMessages()
 
-  const { email, name, password, error, loading, didRedirect } = values;
+  const { email, name, password } = values;
   const { userSignup } = UserOperations();
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -27,12 +26,15 @@ const Signin = () => {
     userSignup({ name, email, password })
       .then((res) => {
         console.log("res", res);
+        SuccessNotify("Successfully Signed you up")
         dispatch({
           type: "SET_AUTH_STATUS_VISIBLE",
           payload: true,
         });
+
       })
       .catch((err) => {
+        ErrorNotify(err)
         console.log("err", err);
       });
   };

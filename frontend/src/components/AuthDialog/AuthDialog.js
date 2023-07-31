@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Signin from "./Signin";
 import Signup from "./Singup";
 
+
 const AuthDialog = (props) => {
   const { SignupStatus, user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
-
   const isUserNotLoggedIn = () => (
     <>
       {SignupStatus ? <Signin /> : <Signup />}
@@ -32,7 +32,7 @@ const AuthDialog = (props) => {
   );
   const isUserLoggedIn = () => (
     <div className="text-center">
-      <div class="demo-wrapper">
+      <div class="demo-wrapper mb-1">
         <div class="svg-wrapper">
           <svg class="svg" version="1.1" id="tick" viewBox="6 5 26 26">
             <polyline
@@ -43,14 +43,27 @@ const AuthDialog = (props) => {
           </svg>
         </div>
       </div>
+      <div>
+        <h4>Succefully Logged In</h4>
+        <div className="d-grid gap-2">
+      <Button href={`/user/dashboard:${user.userDisplayName}`} variant="primary" size="lg">
+        {user.userDisplayName} Dashboard
+      </Button>
+    </div>
+      </div>
     </div>
   );
+  const SuccefullyLoggedIn = () =>(
+   <>
+   <div className="text-success">Succefully Logged In</div>
+   </>
+  )
   return (
     <>
       <AqVerticalCentralDialog
         show={props.show}
         hide={props.hide}
-        heading={Signup ? "Signin" : "Signup"}
+        heading={user? SuccefullyLoggedIn() : Signup ? "Signin" : "Signup"}
       >
         {user ? isUserLoggedIn() : isUserNotLoggedIn()}
       </AqVerticalCentralDialog>

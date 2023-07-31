@@ -4,7 +4,7 @@ import { Button, Form, Spinner } from "react-bootstrap";
 import UserOperations from "../../services/user";
 import ToastMessages from "../../reusables/toast";
 import UseSpinner from "../../reusables/Spinner";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -12,6 +12,7 @@ const Signin = () => {
     password: "",
   });
   const dispatch = useDispatch();
+  const {user} = useSelector((state) => ({ ...state }));
  
   const [loading, setLoading] = useState(false);
   const { email, password } = values;
@@ -25,13 +26,14 @@ const Signin = () => {
     setLoading(true);
     userLogin({ email, password })
       .then((res) => {
-        console.log("success", res);
+        console.log("success", res.data.user);
         dispatch({
           type: "LOGGED_IN_USER",
-          payload: res.data,
+          payload: JSON.stringify(res.data.user),
         });
         setTimeout(() => setLoading(false), 1000);
         SuccessNotify("Succesfully Logged In");
+        console.log("signin" , user)
       })
       .catch((err) => {
         console.log("err", err);

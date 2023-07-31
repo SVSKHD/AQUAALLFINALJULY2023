@@ -48,7 +48,7 @@ html,body {
 }
 
 .svg-wrapper {
-  background: blueviolet;
+  background: #071952;
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -63,7 +63,7 @@ html,body {
 
 .path {
   fill: transparent;
-  stroke: #53bf8b;
+  stroke: #0B666A;
   stroke-width: 2;
   stroke-dasharray: 25;
   stroke-dashoffset: 0;
