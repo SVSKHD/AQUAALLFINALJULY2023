@@ -1,15 +1,16 @@
 import Card from 'react-bootstrap/Card';
 const AquaCardLayover = (props) => {
+    const {title} = props
     return (
         <>
-            <Card className='shadow-lg'>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        {props.children}
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+            <Card className='shadow-lg m-5'>
+                <Card.Body className='m-1'>
+                    <Card.Title className='display-6'>{title}</Card.Title>
+                    <hr/>
+
+                    {props.children}
+
+
                 </Card.Body>
             </Card>
         </>
