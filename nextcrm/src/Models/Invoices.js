@@ -7,19 +7,36 @@ const AquaInvoiceSchema = new mongoose.Schema(
             type: String
         },
         customerDetails: {
-            name: {},
-            phone: {},
-            email: {},
-            address: {},
+            name: {
+                type: String
+            },
+            phone: {
+                type: Number,
+
+            },
+            email: {
+                type: String
+            },
+            address: {
+                type: String
+            },
         },
         gst: {
             type: Boolean
         },
         gstDetails: {
-            gstName: {},
-            gstPhone: {},
-            gstEmail: {},
-            gstAddress: {},
+            gstName: {
+                type: String
+            },
+            gstPhone: {
+                type: Number
+            },
+            gstEmail: {
+                type: String
+            },
+            gstAddress: {
+                type: String
+            },
         },
         products: [
             {
