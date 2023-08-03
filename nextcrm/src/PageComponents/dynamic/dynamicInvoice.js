@@ -37,6 +37,12 @@ const AquaDyanamicInvoicesComponent = () => {
       description: "PLUMBING WORK MONITORING WILL BE DONE BY OUR ENGINEERS",
     },
   ];
+
+  const gstValueGenerate = () => {
+    let basePrice = Math.floor(Data.value.paidAmount * 0.8474594);
+    let gst = Math.floor(basePrice * 0.18);
+    return gst;
+  };
   return (
     <>
       <div className="mb-5" />
@@ -93,7 +99,7 @@ const AquaDyanamicInvoicesComponent = () => {
                 <th scope="col">Quantity</th>
                 <th scope="col">Name</th>
                 <th scope="col">Base-Price</th>
-                <th scope="col">GST</th>
+                <th scope="col">GST(18%)</th>
                 <th scope="col">Total Price</th>
               </tr>
             </thead>
@@ -108,7 +114,7 @@ const AquaDyanamicInvoicesComponent = () => {
           </table>
           <hr/>
           {termsAndConditions.map((r,i)=>(
-            <AquaLists title={r.title}/>
+            <AquaLists title={r.title} description={r.description} number={i+1}/>
           ))}
         </AquaInvoiceCardLayover>
       </div>
