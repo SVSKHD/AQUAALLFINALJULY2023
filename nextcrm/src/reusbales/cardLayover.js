@@ -7,10 +7,7 @@ const AquaCardLayover = (props) => {
                 <Card.Body className='m-1'>
                     <Card.Title className='display-6'>{title}</Card.Title>
                     <hr/>
-
                     {props.children}
-
-
                 </Card.Body>
             </Card>
         </>

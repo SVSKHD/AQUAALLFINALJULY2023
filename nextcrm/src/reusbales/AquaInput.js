@@ -3,18 +3,18 @@ const AquaInput = ({ label, placeholder, handleChange, type, Address }) => {
         <>
             {Address ? (
                 <>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">{label}</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder={placeholder} onChange={handleChange} />
+                    <div className="mb-3">
+                        <label for="exampleFormControlTextarea1" className="form-label aqua-input-font">{label}</label>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder={placeholder} onChange={handleChange} />
                     </div>
                 </>
             ) : (
                 <>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">
+                    <div className="mb-3">
+                        <label for="exampleFormControlInput1" className="form-label aqua-input-font">
                             {label}
                         </label>
-                        <input type={type} class="form-control" id="exampleFormControlInput1" placeholder={placeholder} onChange={handleChange} />
+                        <input type={type} className="form-control" id="exampleFormControlInput1" placeholder={placeholder} onChange={handleChange} />
                     </div >
                 </>
             )}
