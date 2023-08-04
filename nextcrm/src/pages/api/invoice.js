@@ -1,18 +1,17 @@
-import axios from "axios"
-import nc from "next-connect"
+import { createRouter } from "next-connect";
+import db from "@/middleware/db";
 
-// const handler = nc()
+const router = createRouter();
 
-// handler.post(async (req, res) => {
-//     try {
-//         const { data } = req.body
-//         console.log(data)
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
-
-export default function handler(req, res) {
-    res.status(200).json({ name: "hithesh" });
+router.post(async (req, res) => {
+  try {
+    db.connectDb()
+    const body = req.body
+    res.status(200).json(body)
+    db.disconnectDb()
+  } catch (error) {
+    
   }
-  
+});
+
+export default router.handler();
