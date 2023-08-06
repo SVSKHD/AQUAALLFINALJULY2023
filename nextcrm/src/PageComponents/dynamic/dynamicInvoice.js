@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image";
 import AQ from "../../Assests/logo.png";
 import AquaInvoiceCardLayover from "@/reusbales/invoiceCardLayover";
 import AquaLists from "@/reusbales/listedElements";
+import AquaPlaceholder from "@/reusbales/placeholder";
 const AquaDyanamicInvoicesComponent = () => {
   const [gst, setGst] = useState(false)
-  let termsAndConditions =[
+  let termsAndConditions = [
     {
       title: "Transport",
       description:
@@ -67,20 +68,20 @@ const AquaDyanamicInvoicesComponent = () => {
             <h3>Customer Details</h3>
           </div>
           <hr />
-          <div className="container-fluid">
+          <div className="container">
             <div className="row">
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                <h1>Name : </h1>
-                <h3>Phone: </h3>
-                <h3>Address:</h3>
+                <AquaPlaceholder type="Name" size={1.7}/>
+                <AquaPlaceholder type="Phone" size={1.4} />
+                <AquaPlaceholder type="Address" size={1.2} />
               </div>
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                 {gst ? (
                   <div>
-                    <h1>GstName : </h1>
-                    <h2>GstNo: </h2>
-                    <h3>Phone: </h3>
-                    <h3>GstAddress:</h3>
+                    <AquaPlaceholder type="Gst-Name" size={1.7}/>
+                    <AquaPlaceholder type="Gst-No" size={1.45}/>
+                    <AquaPlaceholder type="Gst-Phone" size={1.4} />
+                    <AquaPlaceholder type="Gst-Address" size={1.2} />
                   </div>
                 ) : (
                   <div />
@@ -112,9 +113,9 @@ const AquaDyanamicInvoicesComponent = () => {
               </tr>
             </tbody>
           </table>
-          <hr/>
-          {termsAndConditions.map((r,i)=>(
-            <AquaLists title={r.title} description={r.description} number={i+1}/>
+          <hr />
+          {termsAndConditions.map((r, i) => (
+            <AquaLists key={i} title={r.title} description={r.description} number={i + 1} />
           ))}
         </AquaInvoiceCardLayover>
       </div>
