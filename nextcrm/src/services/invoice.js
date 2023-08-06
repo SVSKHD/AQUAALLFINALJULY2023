@@ -1,16 +1,15 @@
 import axios from "axios"
 
-const BaseUrl = process.env.API
 const getInvoices = () => (
-    axios.get(`${BaseUrl}/invoice`)
+    axios.get(`/invoice`)
 )
 
 const updateInvoice = (id, data) => (
-    axios.put(`${BaseUrl}/invoice?invoice=${id}`, data)
+    axios.put(`/invoice?invoice=${id}`, data)
 )
 
 const getIndividualInvoice = (id)=>(
-    axios.get(`${BaseUrl}/invoice?invoice=${id}`)
+    axios.get(`/invoice?invoice=${id}`)
 )
 
 
