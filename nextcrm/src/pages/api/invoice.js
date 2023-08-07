@@ -46,7 +46,7 @@ router.get(async (req, res) => {
         let individualInvoice = await AquaInvoices.findById(invoice)
         res.status(200).json(individualInvoice)
         db.disconnectDb()
-    } else {
+    } else if(!invoice){
         db.connectDb()
         let invoices = await AquaInvoices.find()
         res.status(200).json(invoices)
