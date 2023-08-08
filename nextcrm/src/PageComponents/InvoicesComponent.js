@@ -3,16 +3,11 @@ import AquaInput from "@/reusbales/AquaInput";
 import AquaCardLayover from "@/reusbales/cardLayover";
 import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import InvoiceOperations from "@/services/invoice";
+import AquaInvoicesList from "./Dynamic/InvoiceComponents/invoiceList";
 
 const InvoiceComponent = () => {
   const [gst, setGst] = useState(false);
-  const { getInvoices } = InvoiceOperations();
-  useEffect(() => {
-    getInvoices().then((res) => {
-      console.log("invoices", res);
-    });
-  });
+
   const handleSubmit = () => {
     console.log("gst", gst);
   };
@@ -22,7 +17,9 @@ const InvoiceComponent = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-              <AquaCardLayover title="Invoices"></AquaCardLayover>
+              <AquaCardLayover title="Invoices">
+                <AquaInvoicesList/>
+              </AquaCardLayover>
             </div>
             <div className="col-md-8 col-lg-8 col-xs-12 col-sm-12">
               <AquaCardLayover title="Create Invoices">
@@ -49,9 +46,9 @@ const InvoiceComponent = () => {
                       />
                     </div>
                     <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                      <div class="form-check form-switch">
+                      <div className="form-check form-switch">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           role="switch"
                           id="flexSwitchCheckDefault"
