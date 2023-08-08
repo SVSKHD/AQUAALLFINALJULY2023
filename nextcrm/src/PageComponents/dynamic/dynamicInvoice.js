@@ -1,11 +1,29 @@
 import { useState, useEffect } from "react"
+import { useRouter } from 'next/router'
 import Image from "next/image";
 import AQ from "../../Assests/logo.png";
 import AquaInvoiceCardLayover from "@/reusbales/invoiceCardLayover";
 import AquaLists from "@/reusbales/listedElements";
 import AquaPlaceholder from "@/reusbales/placeholder";
+import InvoiceOperations from "@/services/invoice";
+
+
 const AquaDyanamicInvoicesComponent = () => {
+  const [invoice , setInvoice] = useState()
+  const Router = useRouter()
+  const { getIndividualInvoice } = InvoiceOperations()
+  let match = Router.query.invoiceId
+  useEffect(() => {
+    getIndividualInvoice(match).then((res) => {
+      console.log("res", res)
+      setInvoice(res.data)
+      if(res){
+        setGst(res.data.gst)
+      }
+    })
+  }, [])
   const [gst, setGst] = useState(false)
+
   let termsAndConditions = [
     {
       title: "Transport",
@@ -73,15 +91,15 @@ const AquaDyanamicInvoicesComponent = () => {
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                 <AquaPlaceholder type="Name" size={1.7}/>
                 <AquaPlaceholder type="Phone" size={1.4} />
-                <AquaPlaceholder type="Address" size={1.2} />
+                <AquaPlaceholder type="Address" size={1.2}  />
               </div>
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                 {gst ? (
                   <div>
-                    <AquaPlaceholder type="Gst-Name" size={1.7}/>
-                    <AquaPlaceholder type="Gst-No" size={1.45}/>
-                    <AquaPlaceholder type="Gst-Phone" size={1.4} />
-                    <AquaPlaceholder type="Gst-Address" size={1.2} />
+                    <AquaPlaceholder type="Gst-Name" size={1.7} name={invoice.gstDetails.gstName} />
+                    <AquaPlaceholder type="Gst-No" size={1.45} name={invoice.gstDetails.gstNo}/>
+                    <AquaPlaceholder type="Gst-Phone" size={1.4} name={invoice.gstDetails.gstPhone} />
+                    <AquaPlaceholder type="Gst-Address" size={1.2} name={invoice.gstDetails.gstAddress} />
                   </div>
                 ) : (
                   <div />

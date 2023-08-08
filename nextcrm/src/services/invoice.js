@@ -1,5 +1,7 @@
 import axios from "axios";
 
+let baseUrl = process.env.API_URL
+
 const getInvoices = () => axios.get(`api/invoice`);
 
 const updateInvoice = (id, data) =>
