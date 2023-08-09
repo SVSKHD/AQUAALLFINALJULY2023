@@ -15,6 +15,7 @@ router.post(async (req, res) => {
         const body = req.body;
         body.invoiceNo = `AQB-${date}-${invoiceId}`;
         body.date = date;
+        console.log(body)
         const invoice = new AquaInvoices(body);
         await invoice.save();
         res.status(200).json(invoice);

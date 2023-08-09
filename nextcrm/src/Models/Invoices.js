@@ -29,6 +29,9 @@ const AquaInvoiceSchema = new mongoose.Schema(
       gstName: {
         type: String,
       },
+      gstNo: {
+        type: String,
+      },
       gstPhone: {
         type: Number,
       },
@@ -76,6 +79,7 @@ const AquaInvoiceSchema = new mongoose.Schema(
 );
 
 const AquaInvoices =
-  mongoose.models.AquaInvoices || mongoose.model("AquaInvoices", AquaInvoiceSchema);
+  mongoose.models.AquaInvoices ||
+  mongoose.model("AquaInvoices", AquaInvoiceSchema);
 
 export default AquaInvoices;

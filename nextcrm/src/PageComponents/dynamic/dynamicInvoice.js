@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import { useRouter } from 'next/router'
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import AQ from "../../Assests/logo.png";
 import AquaInvoiceCardLayover from "@/reusbales/invoiceCardLayover";
@@ -7,28 +7,32 @@ import AquaLists from "@/reusbales/listedElements";
 import AquaPlaceholder from "@/reusbales/placeholder";
 import InvoiceOperations from "@/services/invoice";
 
-
 const AquaDyanamicInvoicesComponent = () => {
-  const [invoice , setInvoice] = useState()
-  const Router = useRouter()
-  const { getIndividualInvoice } = InvoiceOperations()
-  let match = Router.query.invoiceId
-  useEffect(() => {
-    getIndividualInvoice(match).then((res) => {
-      console.log("res", res)
-      setInvoice(res.data)
-      if(res){
-        setGst(res.data.gst)
+  const Router = useRouter();
+  let id = Router.query.id;
+  const [invoice, setInvoice] = useState("");
+
+  const { getIndividualInvoice } = InvoiceOperations();
+  const getInvoiceById = async (id) => {
+    await getIndividualInvoice(id).then((res) => {
+      setInvoice(res.data);
+      console.log("res", invoice);
+      if (res) {
+        setGst(res.data.gst);
       }
-    })
-  }, [])
-  const [gst, setGst] = useState(false)
+    });
+  };
+  useEffect(() => {
+    getInvoiceById(id);
+  }, []);
+
+  const [gst, setGst] = useState(false);
+  const { customerDetails, products, gstDetails } = invoice;
 
   let termsAndConditions = [
     {
       title: "Transport",
-      description:
-        "TRANSPORT / LIFTING CHARGES WILL BE BORN BY THE CUSTOMER.",
+      description: "TRANSPORT / LIFTING CHARGES WILL BE BORN BY THE CUSTOMER.",
     },
     {
       title: "Plumber",
@@ -47,8 +51,7 @@ const AquaDyanamicInvoicesComponent = () => {
     },
     {
       title: "Delivery and Installation policy",
-      description:
-        "DELIVERY / INSTALLATION COMPLETED WITHIN 7 WORKING DAYS. ",
+      description: "DELIVERY / INSTALLATION COMPLETED WITHIN 7 WORKING DAYS. ",
     },
     { title: "Advance policy", description: "100% ADVANCE ALONG WITH PO." },
     {
@@ -76,9 +79,7 @@ const AquaDyanamicInvoicesComponent = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-              <div className="">
-                date : {new Date().getFullYear}
-              </div>
+              <div className="">date : {new Date().getFullYear}</div>
             </div>
           </div>
           <hr />
@@ -89,17 +90,50 @@ const AquaDyanamicInvoicesComponent = () => {
           <div className="container">
             <div className="row">
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                <AquaPlaceholder type="Name" size={1.7}/>
-                <AquaPlaceholder type="Phone" size={1.4} />
-                <AquaPlaceholder type="Address" size={1.2}  />
+                <AquaPlaceholder
+                  type="Name"
+                  size={1.7}
+                  name={invoice ? customerDetails.name : ""}
+                />
+                <AquaPlaceholder
+                  type="Email"
+                  size={1.5}
+                  name={invoice ? customerDetails.email : ""}
+                />
+                <AquaPlaceholder
+                  type="Phone"
+                  size={1.4}
+                  name={invoice ? customerDetails.phone : ""}
+                />
+                <AquaPlaceholder
+                  type="Address"
+                  size={1.2}
+                  name={invoice ? customerDetails.address : ""}
+                />
               </div>
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                 {gst ? (
                   <div>
-                    <AquaPlaceholder type="Gst-Name" size={1.7} name={invoice.gstDetails.gstName} />
-                    <AquaPlaceholder type="Gst-No" size={1.45} name={invoice.gstDetails.gstNo}/>
-                    <AquaPlaceholder type="Gst-Phone" size={1.4} name={invoice.gstDetails.gstPhone} />
-                    <AquaPlaceholder type="Gst-Address" size={1.2} name={invoice.gstDetails.gstAddress} />
+                    <AquaPlaceholder
+                      type="Gst-Name"
+                      size={1.7}
+                      name={invoice ? gstDetails.gstName : ""}
+                    />
+                    <AquaPlaceholder
+                      type="Gst-No"
+                      size={1.45}
+                      name={invoice ? gstDetails.gstNo : ""}
+                    />
+                    <AquaPlaceholder
+                      type="Gst-Phone"
+                      size={1.4}
+                      name={invoice ? gstDetails.gstPhone : ""}
+                    />
+                    <AquaPlaceholder
+                      type="Gst-Address"
+                      size={1.2}
+                      name={invoice ? gstDetails.gstAddress : ""}
+                    />
                   </div>
                 ) : (
                   <div />
@@ -112,7 +146,7 @@ const AquaDyanamicInvoicesComponent = () => {
             <h3>Product Details</h3>
           </div>
           <hr />
-          <table class="table table-borderless text-center">
+          <table className="table table-borderless text-center">
             <thead>
               <tr>
                 <th scope="col">Quantity</th>
@@ -123,22 +157,37 @@ const AquaDyanamicInvoicesComponent = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
+              {invoice?products.map((r, i) => (
+                <>
+                  <tr>
+                    <th scope="row">{i + 1}</th>
+                    <td>{r.productName}</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                </>
+              )):""}
             </tbody>
           </table>
           <hr />
           {termsAndConditions.map((r, i) => (
-            <AquaLists key={i} title={r.title} description={r.description} number={i + 1} />
+            <AquaLists
+              key={i}
+              title={r.title}
+              description={r.description}
+              number={i + 1}
+            />
           ))}
         </AquaInvoiceCardLayover>
       </div>
     </>
   );
 };
+
+export function getServerSideProps(context) {
+  return {
+    props: { params: context.params },
+  };
+}
 
 export default AquaDyanamicInvoicesComponent;
