@@ -27,7 +27,7 @@ const AquaDyanamicInvoicesComponent = () => {
   }, []);
 
   const [gst, setGst] = useState(false);
-  const { customerDetails, products, gstDetails } = invoice;
+  const { customerDetails, products, gstDetails , date , invoiceNo} = invoice;
 
   let termsAndConditions = [
     {
@@ -60,8 +60,13 @@ const AquaDyanamicInvoicesComponent = () => {
     },
   ];
 
-  const gstValueGenerate = () => {
-    let basePrice = Math.floor(Data.value.paidAmount * 0.8474594);
+  const BasePrice = (price) =>{
+    let basePrice = Math.floor(price * 0.8474594);
+    return basePrice 
+  }
+
+  const gstValueGenerate = (price) => {
+    let basePrice = Math.floor(price * 0.8474594);
     let gst = Math.floor(basePrice * 0.18);
     return gst;
   };
@@ -78,8 +83,9 @@ const AquaDyanamicInvoicesComponent = () => {
                 <h6>GST- 36AMUPB4451C1Z7</h6>
               </div>
             </div>
-            <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-              <div className="">date : {new Date().getFullYear}</div>
+            <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12 text-center">
+              <div>date : {date}</div>
+              <AquaPlaceholder  type="Invoice-No" size={1.2} name={invoiceNo} />
             </div>
           </div>
           <hr />
@@ -92,22 +98,22 @@ const AquaDyanamicInvoicesComponent = () => {
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                 <AquaPlaceholder
                   type="Name"
-                  size={1.7}
+                  size={1.5}
                   name={invoice ? customerDetails.name : ""}
                 />
                 <AquaPlaceholder
                   type="Email"
-                  size={1.5}
+                  size={1.1}
                   name={invoice ? customerDetails.email : ""}
                 />
                 <AquaPlaceholder
                   type="Phone"
-                  size={1.4}
+                  size={1.1}
                   name={invoice ? customerDetails.phone : ""}
                 />
                 <AquaPlaceholder
                   type="Address"
-                  size={1.2}
+                  size={1.1}
                   name={invoice ? customerDetails.address : ""}
                 />
               </div>
@@ -116,22 +122,22 @@ const AquaDyanamicInvoicesComponent = () => {
                   <div>
                     <AquaPlaceholder
                       type="Gst-Name"
-                      size={1.7}
+                      size={1.5}
                       name={invoice ? gstDetails.gstName : ""}
                     />
                     <AquaPlaceholder
                       type="Gst-No"
-                      size={1.45}
+                      size={1.3}
                       name={invoice ? gstDetails.gstNo : ""}
                     />
                     <AquaPlaceholder
                       type="Gst-Phone"
-                      size={1.4}
+                      size={1.1}
                       name={invoice ? gstDetails.gstPhone : ""}
                     />
                     <AquaPlaceholder
                       type="Gst-Address"
-                      size={1.2}
+                      size={1.1}
                       name={invoice ? gstDetails.gstAddress : ""}
                     />
                   </div>
@@ -162,8 +168,9 @@ const AquaDyanamicInvoicesComponent = () => {
                   <tr>
                     <th scope="row">{i + 1}</th>
                     <td>{r.productName}</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td className="text-success">{BasePrice(r.productPrice)}</td>
+                    <td>{gstValueGenerate(r.productPrice)}</td>
+                    <td className="text-success">₹{r.productPrice}</td>
                   </tr>
                 </>
               )):""}
