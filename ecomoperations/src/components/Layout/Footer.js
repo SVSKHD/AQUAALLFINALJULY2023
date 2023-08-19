@@ -23,7 +23,7 @@ function AquaFooter() {
   }, []);
 
   return (
-    <footer className={`footer ${isVisible ? 'visible' : ''}`}>
+    <footer className={`footer ${isVisible ? 'visible' : ''} shadow-lg`}>
       <Container>
         <Row>
           <Col>

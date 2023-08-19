@@ -1,17 +1,17 @@
 import AquaNav from "./NavBar"
 import AquaFooter from "./Footer"
-import AquaRightCornerModal from "@/reusables/prompt"
 import AquaPageWrapper from "../Transitions/pageTransitions"
+import AquaSeo from "../Head/Seo"
 
 const AquaLayout = (props) => {
     return (
         <>
             <AquaNav />
-            <AquaRightCornerModal/>
-            <div className="container-fluid">
-            <AquaPageWrapper>
-            {props.children}
-            </AquaPageWrapper>
+            <AquaSeo seo={props.seo} />
+            <div className="container-fluid p-1">
+                <AquaPageWrapper>
+                    {props.children}
+                </AquaPageWrapper>
             </div>
             <AquaFooter />
         </>

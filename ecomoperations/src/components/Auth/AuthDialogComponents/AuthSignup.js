@@ -1,0 +1,8 @@
+const AuthSignup = () => {
+    return (
+        <>
+            <h1>Signup</h1>
+        </>
+    )
+}
+export default AuthSignup
